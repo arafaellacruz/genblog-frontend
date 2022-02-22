@@ -1,0 +1,12 @@
+.titulo {
+    font-weight: bold;
+}
+
+.tabPanel {
+    font-variant: small-caps;
+    color: aliceblue;
+    background-color: #273f70;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    direction: center;
+}

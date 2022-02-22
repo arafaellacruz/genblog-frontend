@@ -24,7 +24,7 @@ Comunicação com o Back-end - Login
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https:://bloggeneration.herokuapp.com'
+    baseURL: 'https://blogdarafa.herokuapp.com'
 })
 
 /*De forma assincrona, passamos 3 parâmetros:

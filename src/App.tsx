@@ -4,12 +4,13 @@ import Navbar from './components/statics/navbar/Navbar';
 import Footer from './components/statics/footer/Footer';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import './App.css';
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario';
+import ListaTema from './components/temas/listatema/ListaTema';
+import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
+import './App.css';
 
 /*  1. yarn add @types/react-router-dom // - Para instalar a biblioteca que faz o controle de rotas na nossa aplicação. 
-    2. Geralmente colocamos as rotas da nossa aplicação no App.tsx
-    3. Dentro de App.tsx, apagar estrutura dentro de return () e adicionar a tag <Router></Router> */
+    2. Geralmente colocamos as rotas da nossa aplicação no App.tsx */
 
 function App() {
   return (
@@ -38,6 +39,13 @@ function App() {
             <CadastroUsuario />
           </Route>
 
+          <Route path='/temas'>
+            <ListaTema />
+          </Route>
+
+          <Route path='/posts'>
+            <ListaPostagem />
+          </Route>
         </div>
       </Switch>
       <Footer />

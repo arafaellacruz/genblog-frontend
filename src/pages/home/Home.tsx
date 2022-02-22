@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Box, Button } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
 import './Home.css';
+import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem";
 
 //Componentes, nada mais são que funções.
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
                     <img src="https://i.imgur.com/tnxFrha.png" alt="" width="100%" height="100%" />
                 </Grid>
                 <Grid xs={12} className='posts'>
+                    <TabPostagem/>
                 </Grid>
             </Grid>
         </>
