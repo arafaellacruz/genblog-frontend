@@ -1,0 +1,26 @@
+.box1{
+    background-color: #8b263d;
+    height: 120px;
+}
+
+.box2{
+    background-color: #8b263d;
+    height: 60px;
+}
+
+.redes{
+    font-size: 40px !important;
+    color: white;
+}
+
+.textos{
+   color: white;
+}
+
+.hover:hover{
+    transform: scale(1.5);
+}
+
+.text-decorator-none {
+    text-decoration: none;
+}

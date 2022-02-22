@@ -1,0 +1,30 @@
+.avatarLogo {
+    background-image: url(https://i.imgur.com/hP785uM.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cursor {
+    cursor: pointer;
+    color: white;
+}
+
+.bgNav {
+    font-variant: small-caps;
+    color: aliceblue;
+    background-color: #273f70;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    direction: center;
+}
+
+.spaceLeft {
+    margin-left: auto!important;
+}
+
+.spaceRight {
+    margin-right: auto!important;
+}

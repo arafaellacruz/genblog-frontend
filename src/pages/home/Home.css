@@ -1,0 +1,19 @@
+.box {
+    background-color: #ece2d4
+    ;
+}
+.title {
+    color: black !important;
+    font-weight: bold !important
+}
+
+.botton {
+    border-color: #5a6783 !important;
+    background-color: #9d8978;
+    color: #5a6783 !important;
+    font-weight: bold !important
+}
+
+posts {
+    background-color: white
+}
