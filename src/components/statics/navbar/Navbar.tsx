@@ -9,11 +9,11 @@ function Navbar() {
             <AppBar position="static" >
                 <Toolbar variant="dense" className='bgNav'>
                     <Box>
-                    <Avatar alt="LOGO" src='https://i.imgur.com/hP785uM.png' />
+                        <Avatar alt="LOGO" src='https://i.imgur.com/hP785uM.png' />
                     </Box>
                     <Box className='cursor'>
                         <Typography className='bgNav'>
-                           Bazinga!
+                            Bazinga!
                         </Typography>
                     </Box>
 
@@ -26,17 +26,21 @@ function Navbar() {
                             </Box>
                         </Link>
                         •
-                        <Box mx={1} className='cursor'>
-                            <Typography className='titulosNav'>
-                                Postagens
-                            </Typography>
-                        </Box>
+                        <Link to='/posts' >
+                            <Box mx={1} className='cursor'>
+                                <Typography className='titulosNav'>
+                                    Postagens
+                                </Typography>
+                            </Box>
+                        </Link>
                         •
-                        <Box mx={1} className='cursor'>
-                            <Typography className='titulosNav'>
-                                Temas
-                            </Typography>
-                        </Box>
+                        <Link to='/temas' >
+                            <Box mx={1} className='cursor'>
+                                <Typography className='titulosNav'>
+                                    Temas
+                                </Typography>
+                            </Box>
+                        </Link>
                         •
                         <Box mx={1} className='cursor'>
                             <Typography className='titulosNav'>

@@ -13,13 +13,13 @@ function ListaPostagem() {
                             Postagens
                         </Typography>
                         <Typography variant='h5' component='h2'>
-                            Título
+                            Seja bem vinde a nossa Rede! ☺
                         </Typography>
                         <Typography variant='body2' component='p'>
-                            Texto da Postagem
+                            Olá, em breve teremos diversas postagens sobre o incrível mundo da Física!
                         </Typography>
                         <Typography variant='body2' component='p'>
-                            Tema
+                            Tema: Geral
                         </Typography>
                     </CardContent>
                     <CardActions>

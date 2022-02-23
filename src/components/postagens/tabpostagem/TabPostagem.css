@@ -10,3 +10,7 @@
     text-decoration: none;
     direction: center;
 }
+
+.hover:hover {
+    transform: scale(1.1);
+}
