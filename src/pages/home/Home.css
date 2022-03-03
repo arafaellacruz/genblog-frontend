@@ -26,3 +26,7 @@ posts {
     border-color: white !important;
     background-color: white !important;
 }
+
+.text-decorator-none {
+    text-decoration: none;
+}

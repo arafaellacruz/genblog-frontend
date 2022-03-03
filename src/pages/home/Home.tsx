@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Typography, Box, Button, Grid } from '@material-ui/core'
 import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/tokensReducer";
 import './Home.css';
@@ -33,7 +33,9 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
+                        <Link to="/postagem" className="text-decorator-none">
                         <Button variant="outlined" className='botao btnVerPostagens'>Ver Postagens</Button>
+                        </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >

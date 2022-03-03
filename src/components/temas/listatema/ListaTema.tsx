@@ -1,17 +1,22 @@
 import { Box, Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import './ListaTema.css';
 
 /* variant='h5': Estou pedindo para que os estilos de um h5 sejam atribuidos a Typography
  component='h2': efine como renderizamos no html. */
 function ListaTema() {
 
     const [temas, setTemas] = useState<Tema[]>([])  // Criação do nosso state do tipo 'UseTema', e esses temas serão armazenados em um array.
-    const [token, setToken] = useLocalStorage('token'); // Quando solicitarmos a lista, precisamos do token que está armazenado no nosso LocalStorage.
     let history = useHistory(); //O useHistory fará o redirect de páginas, por exemplo: o usuário não  estiver autenticado, ele será redirecionado para a tela de Login.
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {  // O useEffect, junto com useHistory, vai verificar se está vazio ou não, e se estiver vai ser acionado pra redirecionar o usuário para a tela de Login e na segunda situação, ele será usado pra fazer as requisições na nossa API, chamando um tema cadastrado, por exemplo.  
         if (token == '') {
