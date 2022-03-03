@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/userReducer';
+import ModalPostagem from '../modalPostagem/ModalPostagem';
 import './ListaPostagem.css';
 
 function ListaPostagem() {
@@ -37,12 +38,12 @@ function ListaPostagem() {
     }, [postagens.length])
 
     return (
-
         <>
             {
                 postagens.map(postagens => (
+
                     <Box m={2} >
-                        <Card variant='outlined'>
+                        <Card variant='outlined' className='card'>
                             <CardContent>
                                 <Typography color='textSecondary' gutterBottom>
                                     Postagens
@@ -50,6 +51,7 @@ function ListaPostagem() {
                                 <Typography variant='h5' component='h2'>
                                     {postagens.titulo}
                                 </Typography>
+                                <br />
                                 <Typography variant='body2' component='p'>
                                     {postagens.texto}
                                 </Typography>

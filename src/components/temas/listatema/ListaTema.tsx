@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/userReducer';
 import './ListaTema.css';
 
 /* variant='h5': Estou pedindo para que os estilos de um h5 sejam atribuidos a Typography

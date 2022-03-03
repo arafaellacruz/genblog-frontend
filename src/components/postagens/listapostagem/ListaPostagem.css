@@ -1,3 +1,14 @@
 .text-decorator-none {
     text-decoration: none;
 }
+
+.card {
+    width: 700px;
+    height: 250px;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.btn {
+    border-color: black;
+}

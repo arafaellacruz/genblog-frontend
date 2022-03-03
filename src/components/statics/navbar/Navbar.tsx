@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Box, Avatar, Divider } from '@material-ui/
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/userReducer';
 import { addToken } from '../../../store/tokens/actions';
 import './Navbar.css';
 
@@ -29,9 +29,9 @@ function Navbar() {
                 <Box>
                     <Avatar alt="LOGO" src='https://i.imgur.com/hP785uM.png' />
                 </Box>
-                <Box className='cursor'>
+                <Box className='cursor spaceLeft2'>
                     <Typography className='bgNav'>
-                        Bazinga!
+                       <h3>BAZINGA!</h3>
                     </Typography>
                 </Box>
 
@@ -39,38 +39,38 @@ function Navbar() {
                     <Link to='/home' className='text-decorator-none' >
                         <Box mx={1} className='cursor'>
                             <Typography className='titulosNav'>
-                                Home
+                               <h3>Home</h3>
                             </Typography>
                         </Box>
                     </Link>
-                    •
+                    
                     <Link to='/postagem' className='text-decorator-none' >
                         <Box mx={1} className='cursor'>
                             <Typography className='titulosNav'>
-                                Postagens
+                                <h3>Postagens</h3>
                             </Typography>
                         </Box>
                     </Link>
-                    •
+                    
                     <Link to='/tema' className='text-decorator-none' >
                         <Box mx={1} className='cursor'>
                             <Typography className='titulosNav'>
-                                Temas
+                                <h3>Temas</h3>
                             </Typography>
                         </Box>
                     </Link>
-                    •
+                    
                     <Link to='/formularioTema' className='text-decorator-none' >
                         <Box mx={1} className='cursor'>
                             <Typography className='titulosNav'>
-                                Cadastrar tema
+                                <h3>Cadastrar tema</h3>
                             </Typography>
                         </Box>
                     </Link>
-                    •
+                    
                     <Box mx={1} style={{ cursor: "pointer", color: 'white' }} onClick={goLogout}>
                         <Typography className='titulosNav'>
-                            Logout
+                           <h3>Logout </h3>
                         </Typography>
                     </Box>
 

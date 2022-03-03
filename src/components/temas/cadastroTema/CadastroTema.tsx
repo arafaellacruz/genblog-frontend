@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/userReducer';
 import './CadastroTema.css';
 
 

@@ -75,6 +75,7 @@ function App() {
             <Route path='/deletarTema/:id'>
               <DeletarTema />
             </Route>
+
           </div>
         </Switch>
         <Footer />
