@@ -1,20 +1,23 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import { useHistory, useParams } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 import './CadastroTema.css';
 
 
 function CadastroTema() {
     let history = useHistory(); // Faz o redirect de páginas.
     const { id } = useParams<{ id: string }>(); //  useParams serve para capturar parametros enviados por uma url, ou seja, além de criarmos dados por esse componente, pelo que definimos no id da url, também podemos alterar e deletar dados também.
-    const [token, setToken] = useLocalStorage('token');
     const [temas, setTemas] = useState<Tema>({
         id: 0,
         descricao: ''
-    })
+    });
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+      );
 
     useEffect(() => {
         if (token == "") {

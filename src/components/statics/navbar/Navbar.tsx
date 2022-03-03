@@ -2,14 +2,16 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Box, Avatar, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 import './Navbar.css';
 
 function Navbar() {
     // Usamos o LocalStorage para guardar dados não sensiveis do usuário, por exemplo: Token.
-    const [token, setToken] = useLocalStorage("token");
     let history = useHistory();
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+      );
 
     function goLogout() {
         setToken('')

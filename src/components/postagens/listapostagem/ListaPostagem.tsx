@@ -1,16 +1,19 @@
 import { Box, Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 import './ListaPostagem.css';
 
 function ListaPostagem() {
 
     const [postagens, setPostagens] = useState<Postagem[]>([])
-    const [token, setToken] = useLocalStorage('token');
     let history = useHistory();
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {
         if (token == '') {

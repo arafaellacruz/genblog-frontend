@@ -4,16 +4,18 @@ Dentro de Login.tsx fazer as importações: */
 import React, { useState, useEffect, ChangeEvent } from 'react'; // useState é responsável por fazer o controle dos estados de um componente.
 import { Grid, Box, Typography, TextField, Button } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { login } from '../../services/Service';
 import UserLogin from '../../models/UserLogin';
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/actions';
 import './Login.css';
 
 function Login() {
     /* userLogin: variável de estado, para acessar a informação do State;
         setUserLogin: variável de alteração da variável de estado, função para alterar informação do State */
     let history = useHistory();
-    const [token, setToken] = useLocalStorage('token');
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('');
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             id: 0,
@@ -32,6 +34,7 @@ function Login() {
 
         useEffect( () => {
             if (token != '') {
+                dispatch (addToken(token));
                 history.push('/home')
             }
         }, [token])

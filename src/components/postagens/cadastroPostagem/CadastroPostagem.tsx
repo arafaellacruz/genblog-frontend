@@ -2,9 +2,10 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import { useHistory, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 import '././CadastroPostagem.css';
 
 function CadastroPostagem() {
@@ -12,7 +13,9 @@ function CadastroPostagem() {
         let history = useHistory(); // Redirect de páginas.
         const { id } = useParams<{ id: string }>(); // Vai capturar os id's das rotas, em casos de atualizações.
         const [temas, setTemas] = useState<Tema[]>([]) // Listagem de temas da nossa API.
-        const [token, setToken] = useLocalStorage('token'); // Token armazenado no LocalStorage
+        const token = useSelector<TokenState, TokenState['tokens']>(
+            (state) => state.tokens
+        );
 
         // Se o token estiver autenticado no LocalStorage indica que o usuário está logado e poderá fazer requisições, caso não esteja autenticado (estiver vazio) o usuário é redirecionado para o Login.
         useEffect(() => {

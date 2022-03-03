@@ -1,13 +1,26 @@
-import React from "react";
-import { Typography, Box, Button } from '@material-ui/core'
-import { Grid } from '@material-ui/core'
+import React, { useEffect } from "react";
+import { Typography, Box, Button, Grid } from '@material-ui/core'
 import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
 import './Home.css';
-
 
 //Componentes, nada mais são que funções.
 function Home() {
+
+    let history = useHistory();
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+    );
+    useEffect(() => {
+        if (token == "") {
+            alert("Você precisa estar logado.")
+            history.push("/login")
+        }
+    }, [token])
+
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className="box">
@@ -27,7 +40,7 @@ function Home() {
                     <img src="https://i.imgur.com/tnxFrha.png" alt="" width="100%" height="100%" />
                 </Grid>
                 <Grid xs={12} className='posts'>
-                    <TabPostagem/>
+                    <TabPostagem />
                 </Grid>
             </Grid>
         </>
