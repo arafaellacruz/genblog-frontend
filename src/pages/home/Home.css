@@ -1,7 +1,7 @@
 .box {
-    background-color: #ece2d4
-    ;
+    background-color: #ece2d4;
 }
+
 .title {
     color: black !important;
     font-weight: bold !important
@@ -16,4 +16,13 @@
 
 posts {
     background-color: white
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.btnVerPostagens {
+    border-color: white !important;
+    background-color: white !important;
 }

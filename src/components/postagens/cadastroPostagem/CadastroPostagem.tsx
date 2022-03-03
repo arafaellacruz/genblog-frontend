@@ -87,14 +87,14 @@ function CadastroPostagem() {
             e.preventDefault()
 
             if (id !== undefined) {
-                put(`/postagem`, postagem, setPostagem, {
+                put(`/postagem/atualizar`, postagem, setPostagem, {
                     headers: {
                         'Authorization': token
                     }
                 })
                 alert('Postagem atualizada com sucesso');
             } else {
-                post(`/postagem`, postagem, setPostagem, {
+                post(`/postagem/cadastrar`, postagem, setPostagem, {
                     headers: {
                         'Authorization': token
                     }

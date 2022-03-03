@@ -3,14 +3,14 @@
 }
 
 .tabPanel {
-    font-variant: small-caps;
-    color: aliceblue;
-    background-color: #273f70;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    direction: center;
+    font-variant: small-caps !important;
+    color: aliceblue !important;
+    background-color: #273f70 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    text-decoration: none !important;
+    direction: center !important;
 }
 
 .hover:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
 }
