@@ -1,5 +1,4 @@
 /* Dentro de pages, criar uma nova página chamada "Login" e dentro dessa nova página, criar 2 arquivos para Loginm(css e tsx).
-
 Dentro de Login.tsx fazer as importações: */
 
 import React, { useState, useEffect, ChangeEvent } from 'react'; // useState é responsável por fazer o controle dos estados de um componente.
@@ -41,7 +40,7 @@ function Login() {
         e.preventDefault();
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
-            alert('Você está conectado a nós!☺');
+            alert('Você está conectade a nós!☺');
         } catch(error) {
             alert('Ops... Você digitou alguma informação incorreta ou ainda não é cadastrade! Mas não desista, tente novamente.');
 
@@ -55,7 +54,6 @@ function Login() {
         
         Formatação do Grid container:
         direction = row (linha), column(colunas), justifyContent = Conteúdo justificado. Use utilitários justify-content nos flex containers para alterar o alinhamento dos flex items, no eixo principal.
-
         */
         <Grid container direction="row" justifyContent='center' alignItems='center'>
             <Grid alignItems='center' xs={6}>

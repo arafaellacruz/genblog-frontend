@@ -1,9 +1,22 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box, Avatar, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+
 import './Navbar.css';
 
 function Navbar() {
+    // Usamos o LocalStorage para guardar dados não sensiveis do usuário, por exemplo: Token.
+    const [token, setToken] = useLocalStorage("token");
+    let history = useHistory();
+
+    function goLogout() {
+        setToken('')
+        alert('Você foi deslogado da nossa rede.')
+        history.push('/login')
+    }
+
     return (
         <>
             <AppBar position="static" >
@@ -18,7 +31,7 @@ function Navbar() {
                     </Box>
 
                     <Box className="spaceLeft" display="flex" justifyContent={'right'}>
-                        <Link to='/home' >
+                        <Link to='/home' className='text-decorator-none' >
                             <Box mx={1} className='cursor'>
                                 <Typography className='titulosNav'>
                                     Home
@@ -26,7 +39,7 @@ function Navbar() {
                             </Box>
                         </Link>
                         •
-                        <Link to='/posts' >
+                        <Link to='/postagem' className='text-decorator-none' >
                             <Box mx={1} className='cursor'>
                                 <Typography className='titulosNav'>
                                     Postagens
@@ -34,7 +47,7 @@ function Navbar() {
                             </Box>
                         </Link>
                         •
-                        <Link to='/temas' >
+                        <Link to='/tema' className='text-decorator-none' >
                             <Box mx={1} className='cursor'>
                                 <Typography className='titulosNav'>
                                     Temas
@@ -42,19 +55,19 @@ function Navbar() {
                             </Box>
                         </Link>
                         •
-                        <Box mx={1} className='cursor'>
-                            <Typography className='titulosNav'>
-                                Cadastrar tema
-                            </Typography>
-                        </Box>
-                        •
-                        <Link to='/login' className='text-decorator-none'>
-                            <Box mx={1} style={{ cursor: "pointer", color: 'white' }}>
+                        <Link to='/formularioTema' className='text-decorator-none' >
+                            <Box mx={1} className='cursor'>
                                 <Typography className='titulosNav'>
-                                    Logout
+                                    Cadastrar tema
                                 </Typography>
                             </Box>
                         </Link>
+                        •
+                        <Box mx={1} style={{ cursor: "pointer", color: 'white' }} onClick={goLogout}>
+                            <Typography className='titulosNav'>
+                                Logout
+                            </Typography>
+                        </Box>
 
                     </Box>
 

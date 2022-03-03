@@ -7,6 +7,10 @@ import Login from './pages/login/Login';
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario';
 import ListaTema from './components/temas/listatema/ListaTema';
 import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
+import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPostagem';
+import CadastroTema from './components/temas/cadastroTema/CadastroTema';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import DeletarTema from './components/temas/deletarTema/DeletarTema';
 import './App.css';
 
 /*  1. yarn add @types/react-router-dom // - Para instalar a biblioteca que faz o controle de rotas na nossa aplicação. 
@@ -22,12 +26,12 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <div style={{minHeight: '100vh'}}>
-        <Route exact path='/'>
+        <div style={{ minHeight: '100vh' }}>
+          <Route exact path='/'>
             <Login />
           </Route>
 
-        <Route path='/login'>
+          <Route path='/login'>
             <Login />
           </Route>
 
@@ -39,17 +43,41 @@ function App() {
             <CadastroUsuario />
           </Route>
 
-          <Route path='/temas'>
+          <Route path='/tema'>
             <ListaTema />
           </Route>
 
-          <Route path='/posts'>
+          <Route path='/postagem'>
             <ListaPostagem />
+          </Route>
+
+          <Route exact path='/formularioPostagem'>
+            <CadastroPostagem />
+          </Route>
+
+          <Route exact path='/formularioPostagem/:id'>
+            <CadastroPostagem />
+          </Route>
+
+          <Route exact path='/formularioTema'>
+            <CadastroTema />
+          </Route>
+
+          <Route exact path='/formularioTema/:id'>
+            <CadastroTema />
+          </Route>
+
+          <Route path='/deletarPostagem/:id'>
+            <DeletarPostagem />
+          </Route>
+
+          <Route path='/deletarTema/:id'>
+            <DeletarTema />
           </Route>
         </div>
       </Switch>
       <Footer />
-    </Router> 
+    </Router>
   );
 }
 

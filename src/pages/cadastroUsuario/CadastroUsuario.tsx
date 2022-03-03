@@ -7,8 +7,9 @@ import './CadastroUsuario.css';
 import { Link } from "react-router-dom";
 
 function CadastroUsuario() {
+
     let history = useHistory();
-    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
+    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
         {
             id: 0,
@@ -47,7 +48,7 @@ function CadastroUsuario() {
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if (confirmarSenha == user.senha && user.senha.length >= 8) {
+        if (confirmarSenha === user.senha && user.senha.length >= 8) {
             cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
             alert('Seja bem vinde a nossa rede! ☺')
         } else {
@@ -67,6 +68,7 @@ function CadastroUsuario() {
                         <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' type='email' fullWidth required />
                         <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required placeholder="Insira no mínimo 8 caracteres." />
                         <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='Confirmar Senha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required placeholder="Insira no mínimo 8 caracteres." />
+                        <TextField value={user.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='foto' label='Foto' variant='outlined' name='foto' margin='normal' fullWidth placeholder="Se quiser adicionar uma foto de perfil, deixe o link aqui." />
 
                         <Box marginTop={2} textAlign='center'>
                             <Link to='/login' className="text-decorator-none">
