@@ -5,6 +5,8 @@ import { buscaId, deleteId } from '../../../services/Service';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/userReducer';
+import { toast } from 'react-toastify';
+
 import './DeletarPostagem.css';
 
 function DeletarPostagem() {
@@ -18,7 +20,16 @@ function DeletarPostagem() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error("Você precisa estar conectade." , {
+        position: 'top-right', // Posição onde o toast irá aparecer.
+        autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+        hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+        closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+        pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+        draggable: false, // Para movermos a notificação de lugar na tela.
+        theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+        progress: undefined
+    });  
       history.push("/login")
 
     }
@@ -45,7 +56,16 @@ function DeletarPostagem() {
         'Authorization': token
       }
     });
-    alert('Postagem deletada com sucesso');
+    toast.success("Sua postagem foi deletada." , {
+      position: 'top-right', // Posição onde o toast irá aparecer.
+      autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+      hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+      closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+      pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+      draggable: false, // Para movermos a notificação de lugar na tela.
+      theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+      progress: undefined
+  });  
   }
 
   function nao() {

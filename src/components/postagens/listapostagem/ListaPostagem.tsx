@@ -5,7 +5,8 @@ import { Link, useHistory } from 'react-router-dom'
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service';
 import { TokenState } from '../../../store/tokens/userReducer';
-import ModalPostagem from '../modalPostagem/ModalPostagem';
+import { toast } from 'react-toastify';
+
 import './ListaPostagem.css';
 
 function ListaPostagem() {
@@ -18,7 +19,16 @@ function ListaPostagem() {
 
     useEffect(() => {
         if (token == '') {
-            alert("Você precisa estar logado!")
+            toast.error("Você precisa estar conectade." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
             history.push('/login')
         }
     }, [token])
@@ -61,14 +71,14 @@ function ListaPostagem() {
                             </CardContent>
                             <CardActions>
                                 <Box display='flex' justifyContent='center' mb={1.5}>
-                                    <Link to={`/formularioPostagem/$postagens.id`} className='text-decorator-none'>
+                                    <Link to={`/formularioPostagem/${postagens.id}`} className='text-decorator-none'>
                                         <Box m={1}>
                                             <Button variant='contained' className='marginLeft' size='small' color='primary'>
                                                 Atualizar
                                             </Button>
                                         </Box>
                                     </Link>
-                                    <Link to={`/deletarPostagem/$postagens.id`} className='text-decorator-none'>
+                                    <Link to={`/deletarPostagem/${postagens.id}`} className='text-decorator-none'>
                                         <Box m={1}>
                                             <Button variant='contained' size='small' color='secondary'>
                                                 Deletar

@@ -6,7 +6,7 @@
     width: 700px;
     height: 250px;
     justify-content: center;
-    border-radius: 50px;
+    border-radius: 30px !important;
 }
 
 .btn {

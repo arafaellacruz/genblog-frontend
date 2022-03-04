@@ -5,6 +5,7 @@ import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostage
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/userReducer";
+import { toast } from 'react-toastify';
 import './Home.css';
 
 //Componentes, nada mais são que funções.
@@ -16,7 +17,16 @@ function Home() {
     );
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado.")
+            toast.error("Você precisa estar conectade." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });            
             history.push("/login")
         }
     }, [token])

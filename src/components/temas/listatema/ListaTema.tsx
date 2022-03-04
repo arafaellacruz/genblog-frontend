@@ -2,10 +2,11 @@ import { Box, Button, Card, CardActions, CardContent, Typography } from '@materi
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
 import { TokenState } from '../../../store/tokens/userReducer';
+import { toast } from 'react-toastify';
+
 import './ListaTema.css';
 
 /* variant='h5': Estou pedindo para que os estilos de um h5 sejam atribuidos a Typography
@@ -20,7 +21,16 @@ function ListaTema() {
 
     useEffect(() => {  // O useEffect, junto com useHistory, vai verificar se está vazio ou não, e se estiver vai ser acionado pra redirecionar o usuário para a tela de Login e na segunda situação, ele será usado pra fazer as requisições na nossa API, chamando um tema cadastrado, por exemplo.  
         if (token == '') {
-            alert("Você precisa estar logado!")
+            toast.error("Você precisa estar conectade." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
             history.push('/login')
         }
     }, [token])

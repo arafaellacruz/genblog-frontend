@@ -6,6 +6,8 @@ import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/userReducer';
+import { toast } from 'react-toastify';
+
 import '././CadastroPostagem.css';
 
 function CadastroPostagem() {
@@ -20,7 +22,16 @@ function CadastroPostagem() {
         // Se o token estiver autenticado no LocalStorage indica que o usuário está logado e poderá fazer requisições, caso não esteja autenticado (estiver vazio) o usuário é redirecionado para o Login.
         useEffect(() => {
             if (token == "") {
-                alert("Você precisa estar logado")
+                toast.error("Você precisa estar conectade." , {
+                    position: 'top-right', // Posição onde o toast irá aparecer.
+                    autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                    hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                    closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                    pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                    draggable: false, // Para movermos a notificação de lugar na tela.
+                    theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                    progress: undefined
+                });     
                 history.push("/login")
 
             }
@@ -95,14 +106,32 @@ function CadastroPostagem() {
                         'Authorization': token
                     }
                 })
-                alert('Postagem atualizada com sucesso');
+                toast.success("Sua postagem foi atualizada." , {
+                    position: 'top-right', // Posição onde o toast irá aparecer.
+                    autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                    hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                    closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                    pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                    draggable: false, // Para movermos a notificação de lugar na tela.
+                    theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                    progress: undefined
+                });     
             } else {
                 post(`/postagem/cadastrar`, postagem, setPostagem, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Postagem cadastrada com sucesso');
+                toast.success("Sua postagem foi criada." , {
+                    position: 'top-right', // Posição onde o toast irá aparecer.
+                    autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                    hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                    closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                    pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                    draggable: false, // Para movermos a notificação de lugar na tela.
+                    theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                    progress: undefined
+                }); 
             }
             back()
 
@@ -137,7 +166,7 @@ function CadastroPostagem() {
                             }
                         </Select>
                         <FormHelperText>Selecione um tema para essa postagem:</FormHelperText>
-                        <Button type="submit" variant="contained" color="primary">
+                        <Button type="submit" variant="contained" color="primary" >
                             Finalizar
                         </Button>
                     </FormControl>

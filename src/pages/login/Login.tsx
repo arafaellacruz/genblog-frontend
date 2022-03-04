@@ -8,6 +8,8 @@ import { login } from '../../services/Service';
 import UserLogin from '../../models/UserLogin';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/actions';
+import { toast } from 'react-toastify';
+
 import './Login.css';
 
 function Login() {
@@ -43,9 +45,27 @@ function Login() {
         e.preventDefault();
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
-            alert('Você está conectade a nós!☺');
+            toast.success('Você foi conectade a nós!☺' , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
         } catch(error) {
-            alert('Ops... Você digitou alguma informação incorreta ou ainda não é cadastrade! Mas não desista, tente novamente.');
+            toast.error('Ops... Você digitou alguma informação incorreta ou ainda não é cadastrade! Mas não desista, tente novamente.' , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 4000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            }); 
 
         }
     }
@@ -76,7 +96,7 @@ function Login() {
                             <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                         </Box>
                         <Link to={"/cadastrousuario"}>
-                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1 text-decorator-'>Cadastre-se</Typography>
                         </Link>
                     </Box>
                 </Box>

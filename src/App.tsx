@@ -13,6 +13,8 @@ import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPosta
 import DeletarTema from './components/temas/deletarTema/DeletarTema';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 /*  1. yarn add @types/react-router-dom // - Para instalar a biblioteca que faz o controle de rotas na nossa aplicação. 
@@ -21,6 +23,7 @@ import './App.css';
 function App() {
   return (
     <Provider store={store}>
+      <ToastContainer/>
       <Router>
         <Navbar />
         {/* Dentro do Switch vão todas as minhas rotas que serão de fato alteradas.

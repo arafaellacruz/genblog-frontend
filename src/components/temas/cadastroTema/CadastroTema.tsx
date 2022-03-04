@@ -5,6 +5,8 @@ import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/userReducer';
+import { toast } from 'react-toastify';
+
 import './CadastroTema.css';
 
 
@@ -21,7 +23,16 @@ function CadastroTema() {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error("Você precisa estar conectade." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
             history.push("/login")
 
         }
@@ -62,8 +73,17 @@ function CadastroTema() {
                     'Authorization': token
                 }
             })
-            alert('Seu tema foi criado!');
-        // Se a rota não tem um id existente, ele irá direcionar pra criar um novo tema.
+            toast.success("Seu tema foi atualizado." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
+            // Se a rota não tem um id existente, ele irá direcionar pra criar um novo tema.
         } else {
             post(`/tema/cadastrar`, temas, setTemas, {
                 headers: {
@@ -71,7 +91,16 @@ function CadastroTema() {
                 }
             })
             console.log("tema " + JSON.stringify(temas))
-            alert('Seu tema foi criado!');
+            toast.success("Seu tema foi cadastrado." , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
         }
         back()
 

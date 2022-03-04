@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 import User from "../../models/User";
 import { cadastroUsuario } from "../../services/Service";
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
-import './CadastroUsuario.css';
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import './CadastroUsuario.css';
+
 
 function CadastroUsuario() {
 
@@ -50,9 +52,27 @@ function CadastroUsuario() {
         e.preventDefault()
         if (confirmarSenha === user.senha && user.senha.length >= 8) {
             cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            alert('Seja bem vinde a nossa rede! ☺')
+            toast.success('Usuário criado! Seja bem vinde a nossa rede! ☺' , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
         } else {
-            alert('Ops... Você digitou alguma informação incorreta! Tente novamente.')
+            toast.error('Ops... Você digitou alguma informação incorreta! Tente novamente.' , {
+                position: 'top-right', // Posição onde o toast irá aparecer.
+                autoClose: 4000, 
+                hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+                closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+                pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+                draggable: false, // Para movermos a notificação de lugar na tela.
+                theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+                progress: undefined
+            });  
         }
     }
 

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/userReducer';
 import { addToken } from '../../../store/tokens/actions';
+import { toast } from 'react-toastify';
 import './Navbar.css';
 
 function Navbar() {
@@ -17,7 +18,16 @@ function Navbar() {
 
     function goLogout() {
         dispatch(addToken(''));
-        alert('Você foi deslogado da nossa rede.')
+        toast.info("Você foi desconectade da nossa rede." , {
+            position: 'top-right', // Posição onde o toast irá aparecer.
+            autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
+            hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
+            closeOnClick: true, // Possibilidade de fechar a notificação em um x.
+            pauseOnHover: false, // Habilitar se ao passar o mouse sobre a notificação irá pausar o autoClose.
+            draggable: false, // Para movermos a notificação de lugar na tela.
+            theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
+            progress: undefined
+        });
         history.push('/login')
     }
 
