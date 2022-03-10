@@ -6,7 +6,6 @@ import Tema from '../../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/userReducer';
 import { toast } from 'react-toastify';
-
 import './DeletarTema.css';
 
 function DeletarTema() {

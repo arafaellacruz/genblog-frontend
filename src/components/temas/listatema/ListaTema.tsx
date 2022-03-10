@@ -53,7 +53,7 @@ function ListaTema() {
             {
                 temas.map(tema => (
                     <Box m={2} justifyContent='center' alignItems='center' margin='50px' marginLeft='50px'>
-                        <Card variant="outlined">
+                        <Card variant="outlined" className='card'>
                             <CardContent>
                                 <Typography color="textSecondary" gutterBottom>
                                     Tema
