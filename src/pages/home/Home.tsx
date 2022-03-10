@@ -43,8 +43,8 @@ function Home() {
                         <Box marginRight={1}>
                             <ModalPostagem />
                         </Box>
-                        <Link to="/postagem" className="text-decorator-none">
-                        <Button variant="outlined" className='botao btnVerPostagens'>Ver Postagens</Button>
+                        <Link to="/postagem"  className='text-decorator-none'  >
+                        <Button variant="outlined" className='btnVerPostagens'>Ver Postagens</Button>
                         </Link>
                     </Box>
                 </Grid>

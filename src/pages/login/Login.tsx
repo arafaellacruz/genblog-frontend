@@ -34,18 +34,18 @@ function Login() {
         })
     }
 
-        useEffect( () => {
-            if (token != '') {
-                dispatch (addToken(token));
-                history.push('/home')
-            }
-        }, [token])
+    useEffect(() => {
+        if (token != '') {
+            dispatch(addToken(token));
+            history.push('/home')
+        }
+    }, [token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
-            toast.success('Você foi conectade a nós!☺' , {
+            toast.success('Você foi conectade a nós!☺', {
                 position: 'top-right', // Posição onde o toast irá aparecer.
                 autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
                 hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
@@ -54,9 +54,9 @@ function Login() {
                 draggable: false, // Para movermos a notificação de lugar na tela.
                 theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
                 progress: undefined
-            });  
-        } catch(error) {
-            toast.error('Ops... Você digitou alguma informação incorreta ou ainda não é cadastrade! Mas não desista, tente novamente.' , {
+            });
+        } catch (error) {
+            toast.error('Ops... Você digitou alguma informação incorreta ou ainda não é cadastrade! Mas não desista, tente novamente.', {
                 position: 'top-right', // Posição onde o toast irá aparecer.
                 autoClose: 4000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
                 hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
@@ -65,7 +65,7 @@ function Login() {
                 draggable: false, // Para movermos a notificação de lugar na tela.
                 theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
                 progress: undefined
-            }); 
+            });
 
         }
     }
@@ -78,27 +78,31 @@ function Login() {
         Formatação do Grid container:
         direction = row (linha), column(colunas), justifyContent = Conteúdo justificado. Use utilitários justify-content nos flex containers para alterar o alinhamento dos flex items, no eixo principal.
         */
-        <Grid container direction="row" justifyContent='center' alignItems='center'>
-            <Grid alignItems='center' xs={6}>
+
+        <Grid container direction="row" justifyContent='center' alignItems='center' className='container background'>
+            <Grid className='fundo' alignItems='center' xs={6}>
                 <Box paddingX={20}>
-                    <form onSubmit={onSubmit}>
+                    <form className='formsLogin' onSubmit={onSubmit}>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{ fontWeight: 'bold' }} > Entrar </Typography>
                         <TextField value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
                         <TextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
                         <Box marginTop={2} textAlign='center'>
-                                <Button type='submit' variant='contained' color='primary'>
-                                    Logar
-                                </Button>
+                            <Button type='submit' variant='contained' color='primary'>
+                                Logar
+                            </Button>
+                        </Box>
+
+                        <Box display='flex' justifyContent='center' alignItems='center' marginTop={2}>
+                            <Box marginRight={1}>
+                                <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
+                            </Box>
+                            <Link className='text-decorator-none' to={"/cadastrousuario"}>
+
+                                <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+
+                            </Link>
                         </Box>
                     </form>
-                    <Box display='flex' justifyContent='center' marginTop={2}>
-                        <Box marginRight={1}>
-                            <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
-                        </Box>
-                        <Link to={"/cadastrousuario"}>
-                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1 text-decorator-'>Cadastre-se</Typography>
-                        </Link>
-                    </Box>
                 </Box>
             </Grid>
             <Grid xs={6} className='imagem' >

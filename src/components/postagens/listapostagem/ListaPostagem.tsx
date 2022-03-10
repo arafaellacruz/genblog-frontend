@@ -52,7 +52,7 @@ function ListaPostagem() {
             {
                 postagens.map(postagens => (
 
-                    <Box m={2} >
+                    <Box m={2} justifyContent='center' alignItems='center' >
                         <Card variant='outlined' className='card'>
                             <CardContent>
                                 <Typography color='textSecondary' gutterBottom>

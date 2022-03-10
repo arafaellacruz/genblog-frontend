@@ -19,11 +19,11 @@ function CadastroTema() {
     });
     const token = useSelector<TokenState, TokenState['tokens']>(
         (state) => state.tokens
-      );
+    );
 
     useEffect(() => {
         if (token == "") {
-            toast.error("Você precisa estar conectade." , {
+            toast.error("Você precisa estar conectade.", {
                 position: 'top-right', // Posição onde o toast irá aparecer.
                 autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
                 hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
@@ -32,7 +32,7 @@ function CadastroTema() {
                 draggable: false, // Para movermos a notificação de lugar na tela.
                 theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
                 progress: undefined
-            });  
+            });
             history.push("/login")
 
         }
@@ -64,7 +64,7 @@ function CadastroTema() {
     // Nessa função o usuário vai preencher os dados e clicar em Finalizar, nesse momento precisamos ter em mente que esse componente vai Cadastrar(post) e Atualizar(put) o tema.
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        
+
         //Se a rota tiver um id existente, ele irá atualizar/reescrever o tema existente.
         if (id !== undefined) {
             console.log(temas)
@@ -73,7 +73,7 @@ function CadastroTema() {
                     'Authorization': token
                 }
             })
-            toast.success("Seu tema foi atualizado." , {
+            toast.success("Seu tema foi atualizado.", {
                 position: 'top-right', // Posição onde o toast irá aparecer.
                 autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
                 hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
@@ -82,7 +82,7 @@ function CadastroTema() {
                 draggable: false, // Para movermos a notificação de lugar na tela.
                 theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
                 progress: undefined
-            });  
+            });
             // Se a rota não tem um id existente, ele irá direcionar pra criar um novo tema.
         } else {
             post(`/tema/cadastrar`, temas, setTemas, {
@@ -91,7 +91,7 @@ function CadastroTema() {
                 }
             })
             console.log("tema " + JSON.stringify(temas))
-            toast.success("Seu tema foi cadastrado." , {
+            toast.success("Seu tema foi cadastrado.", {
                 position: 'top-right', // Posição onde o toast irá aparecer.
                 autoClose: 2000, // Em qual momento a notificação deve sumir (2000 = 2000 milisegundos -> 2 segundos.)
                 hideProgressBar: false, // Esconder a barra de progresso (false = a barra irá aparecer)
@@ -100,7 +100,7 @@ function CadastroTema() {
                 draggable: false, // Para movermos a notificação de lugar na tela.
                 theme: 'colored', // Tipo de tema de como o alerta deve ser exibido
                 progress: undefined
-            });  
+            });
         }
         back()
 
@@ -114,7 +114,10 @@ function CadastroTema() {
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
                 <Typography variant="h3" color="textSecondary" component="h1" align="center" >Crie ou atualize um tema</Typography>
+                <br />
                 <TextField value={temas.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label='Nome do tema' variant="outlined" name="descricao" margin="normal" fullWidth />
+                <br />
+                <br/>
                 <Button type="submit" variant="contained" color="primary">
                     Finalizar
                 </Button>

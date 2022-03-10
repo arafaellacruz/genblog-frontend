@@ -1,11 +1,13 @@
 .titulo {
-    font-weight: bold;
+    font-weight: bold!important;
+    color: white !important;
+    text-shadow: 2px 2px 5px #c30253!important;
 }
 
 .tabPanel {
     font-variant: small-caps !important;
     text-decoration-color: white !important;
-    background-color: #560a5b !important;
+    background-color: #08b0ff !important;
     font-family: Arial, Helvetica, sans-serif !important;
     text-decoration: none !important;
     direction: center !important;
@@ -13,4 +15,11 @@
 
 .hover:hover {
     transform: scale(1.1) !important;
+}
+
+.imageSobre {
+    width: "500px";
+    height: "500px";
+    border-radius: 20px;
+    margin: 70px;
 }

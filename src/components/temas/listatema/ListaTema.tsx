@@ -52,7 +52,7 @@ function ListaTema() {
         <>
             {
                 temas.map(tema => (
-                    <Box m={2} >
+                    <Box m={2} justifyContent='center' alignItems='center' margin='50px' marginLeft='50px'>
                         <Card variant="outlined">
                             <CardContent>
                                 <Typography color="textSecondary" gutterBottom>
@@ -63,7 +63,7 @@ function ListaTema() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Box display="flex" justifyContent="center" mb={1.5} >
+                                <Box display="flex" justifyContent="center" mb={1.5 } >
 
                                     <Link to={`/formularioTema/${tema.id}`} className="text-decorator-none">
                                         <Box mx={1}>
